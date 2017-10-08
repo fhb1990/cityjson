@@ -106,8 +106,7 @@ int main(int argc, char *argv[]) {
        "texture": [
           [ [[0, 10, 23, 23, 11]], null, null, [[0, 13, 52, 66, 57]], [null], null ]
         ],
-        "material1": [2],
-        "material2": [[2]] 
+        "material1": [2]
     }
     )"_json;
     
