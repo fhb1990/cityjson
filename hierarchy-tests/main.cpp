@@ -9,7 +9,6 @@ using nlohmann::json;
 
 json get_semantics(const json::iterator &it, int i = -1, int j = -1, int k = -1);
 int  get_material(const json::iterator &it, int i = -1, int j = -1, int k = -1);
-int  get_texture(const json::iterator &it, int i = -1, int j = -1, int k = -1, int l = -1, int m = -1);
 
 
 //------------------------------
@@ -48,25 +47,6 @@ int get_material(const json::iterator &it, int i, int j, int k) {
   }
 }
 
-int get_texture(const json::iterator &it, int i, int j, int k, int l, int m) {
-  try {
-    if (it.value().is_array() == false)
-      return it.value();
-    else if ( (i != -1) && (it.value()[i].is_array() == false) )
-      return it.value()[i+1];
-    else if ( (j != -1) && (it.value()[i][j].is_array() == false) )
-      return it.value()[i][j+1];
-    else if ( (k != -1) && (it.value()[i][j][k].is_array() == false) )
-      return it.value()[i][j][k+1];
-    else if ( (l != -1) && (it.value()[i][j][k][l].is_array() == false) )
-      return it.value()[i][j][k][l+1];
-    else
-      return it.value()[i][j][k][m+1];
-  }
-  catch (json::type_error& e) {
-    return -1;
-  }
-}
 
 int main(int argc, char *argv[]) {
     
@@ -99,19 +79,17 @@ int main(int argc, char *argv[]) {
              }
              ]
         ],
-      "semantics2":
+        "semantics2":
           {
            "type": "RoofSurface"
           },
-       "texture": [
+        "texture": [
           [ [[0, 10, 23, 23, 11]], null, null, [[0, 13, 52, 66, 57]], [null], null ]
         ],
         "material1": [2]
     }
     )"_json;
     
-  
-  std::cout << myjson.size() << std::endl;
   
   auto its = myjson.find("semantics");
   auto itm = myjson.find("material1");
@@ -127,14 +105,14 @@ int main(int argc, char *argv[]) {
         std::cout << get_material(itm, shellid, surfaceid) << std::endl;
         int ringid = 0;
         for (auto& ring : surface) {
-          std::cout << ring << std::endl;
+          // std::cout << ring << std::endl;
           int vid = 0;
+          std::cout << "texture: [";
           for (auto& v : ring) {
-            std::cout << v << " : ";
-            std::cout << get_texture(itt, shellid, surfaceid, ringid, vid)  << " | ";
+            std::cout << itt.value()[shellid][surfaceid][ringid][vid+1] << ",";
             vid++;
           }
-          std::cout << std::endl;
+          std::cout << "]" << std::endl;
           ringid++;
         }
         surfaceid++;
