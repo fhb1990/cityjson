@@ -11,8 +11,8 @@ import jsonschema
 import os
 #import validictory
 
-filename =  r'schema/v07/noiseexample2.json'
-schemaname = r'schema/v07/noiseade2.json'
+filename =  r'example-datasets/extensions/noiseexample2.json'
+schemaname = r'extensions/noiseade2.json'
 
 script_dir = os.path.abspath('..')
 filepath = os.path.join(script_dir, filename)
