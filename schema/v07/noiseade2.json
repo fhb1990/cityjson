@@ -1,0 +1,50 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "CityJSON Noise Extension",
+	"title": "CityJSON v0.7",
+	"type": "object",
+	"allOf": [ { "$ref": "cityjson.json" } ],
+	"definitions": {
+		"noise-attributes": {
+                        "buildingReflection": {"type": "string"},
+                        "buildingReflectionCorrection": {"type": "number"},
+                        "buildingLDenMax": {"type": "number"},
+                        "buildingLDenMin": {"type": "number"},
+                        "buildingLNightMax": {"type": "number"},
+                        "buildingLNightMin": {"type": "number"},
+                        "buildingLDenEq": {"type": "number"},
+                        "buildingLNightEq": {"type": "number"},
+                        "buildingHabitants": {"type": "integer"},
+                        "buildingImmissionPoints": {"type": "integer"},
+                        "remark": {"type": "string"}
+                    }
+	},
+	
+	"+NoiseBuilding":{
+		"type":"object",
+			
+			 "properties": {
+					"type":{ "enum": ["+NoiseBuilding"]},
+					"Building": {"allOf": [{ "$ref": "cityobjects.json#/Building" }]},
+                    "noise-attributes": {
+                       "$ref": "#/definitions/noise-attributes"
+                    }
+			  },
+			  "required": ["type", "Building", "noise-attributes"]
+               
+	
+	},
+	
+	"+NoiseBuildingPart":{
+		"type":"object",
+		"properties": {
+					"type":{ "enum": ["+NoiseBuildingPart"]},
+					"BuildingPart": {"allOf": [{ "$ref": "cityobjects.json#/BuildingPart" }]},
+					"noise-attributes": {
+                       "$ref": "#/definitions/noise-attributes"
+                    }
+			  },
+			  "required": ["type", "BuildingPart", "noise-attributes"]
+	}
+	
+	}
