@@ -441,6 +441,26 @@
         "required": ["type"]
       }
     ]
+  },
+
+  "Node": {
+    "allOf": [
+      { "$ref": "#/_AbstractCityObject" },
+      { "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array of link CityObject IDs which are adjacent to the node"
+        },
+        "geometry": {
+          "type": "array",
+          "items": {"$ref": "geomprimitives.schema.json#/MultiPoint"}
+        }
+        }
+      }
+    ]
   },  
 
 
