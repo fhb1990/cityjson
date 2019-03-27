@@ -458,7 +458,8 @@
           "type": "array",
           "items": {"$ref": "geomprimitives.schema.json#/MultiPoint"}
         }
-        }
+        },
+        "required": ["geometry"]
       }
     ]
   },  

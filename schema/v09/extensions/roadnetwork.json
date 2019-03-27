@@ -16,8 +16,20 @@
   		"+endNode": {
   			"type": "string",
   			"description": "ID of endNode"
-
+  		},
+  		"+maxSpeed": {
+  			"type": "number"
+  		},
+  		"+mode": {
+  			"type": "string"
+  		},
+  		"+lanes": {
+  			"type": "number"
+  		},
+  		"+drivingDirection": {
+  			"type": "string", "enum": ["toEnd", "toStart", "both"]
   		}
+
   	}
   },
 
@@ -28,7 +40,7 @@
   			{"properties": {
   				"type": { "enum": ["+RoadNode"] },
   				"toplevel": {"type": "boolean"},
-
+  				"turn_table" /// HOW TO LINK TO NUMBER OF LINKS PRESENT? SET RESTRICTIONS?
 
   			}
   		}
