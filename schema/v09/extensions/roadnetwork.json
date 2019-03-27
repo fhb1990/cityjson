@@ -1,6 +1,39 @@
 {
   "type": "CityJSON_Extension",
   "name": "Road Network",
-  "uri": "https://someurl.org/energy.json",
+  "uri": "https://github.com/fhb1990/cityjson/blob/master/schema/v09/extensions/roadnetwork.json",
   "version": "0.1",
-  "description": "CityJSON encoding for CityGML Energy ADE v1.0",
+  "description": "CityJSON encoding for CityGML Road Transportation network",
+
+  "extraRootProperties": {},
+
+  "extraAttributes": {
+  	"Road": {
+  		"+startNode": {
+  			"type": "string",
+  			"description": "ID of startNode"
+  		},
+  		"+endNode": {
+  			"type": "string",
+  			"description": "ID of endNode"
+
+  		}
+  	}
+  },
+
+  "extraCityObjects": {
+  	"+RoadNode": {
+  		"allOf": [
+  			{"$ref": "../cityobjects.schema.json#/Node"},
+  			{"properties": {
+  				"type": { "enum": ["+RoadNode"] },
+  				"toplevel": {"type": "boolean"},
+
+
+  			}
+  		}
+
+  		]
+  	}
+  }
+}
