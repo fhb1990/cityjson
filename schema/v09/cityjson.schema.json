@@ -30,7 +30,7 @@
           { "$ref": "cityobjects.schema.json#/Building" },
           { "$ref": "cityobjects.schema.json#/BuildingPart" },
           { "$ref": "cityobjects.schema.json#/BuildingInstallation" },
-          { "$ref": "cityobjects.schema.json#/Road" },
+          { "$ref": "cityobjects.schema.json#/RoadSegment" },
           { "$ref": "cityobjects.schema.json#/Railway" },
           { "$ref": "cityobjects.schema.json#/TransportSquare" },
           { "$ref": "cityobjects.schema.json#/TINRelief" },

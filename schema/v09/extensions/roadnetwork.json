@@ -8,7 +8,10 @@
   "extraRootProperties": {},
 
   "extraAttributes": {
-  	"Road": {
+  	"RoadSegment": {
+  		"+roadType": {
+  			"enum": ["Road", "Connecting", "Roundabout"] 
+  		},
   		"+startNode": {
   			"type": "string",
   			"description": "ID of startNode"
@@ -27,9 +30,8 @@
   			"type": "number"
   		},
   		"+drivingDirection": {
-  			"type": "string", "enum": ["toEnd", "toStart", "both"]
+  			"enum": ["toEnd", "toStart", "both"]
   		}
-
   	}
   },
 
@@ -39,13 +41,29 @@
   			{"$ref": "../cityobjects.schema.json#/Node"},
   			{"properties": {
   				"type": { "enum": ["+RoadNode"] },
-  				"toplevel": {"type": "boolean"},
-  				"turn_table" /// HOW TO LINK TO NUMBER OF LINKS PRESENT? SET RESTRICTIONS?
+  				"attributes": {
+  					"type": "object",
+  					"properties": {
+  						"roadNodeType": {"enum": ["Intersection", "Roundabout", "LaneSplit", "Attribute"]},
+  						"turns": {
+  							"type": "array",
+  							"items": {
+  								"type": "array",
+  								"items": {"enum": [0,1]}
+  							}
+  						}
+  					}
+  				}
 
   			}
   		}
-
+  		]
+  	},
+  	"+Road": {
+  		"allOf": [
+  			{"$ref": "../cityobjects.schema.json#/CityObjectGroup"}
   		]
   	}
+
   }
 }

@@ -406,12 +406,12 @@
   },
   
   
-  "Road": {
+  "RoadSegment": {
     "allOf": [
       { "$ref": "#/_AbstractTransportationComplex" },
       {
         "properties": {
-          "type": { "enum": ["Road"] }
+          "type": { "enum": ["RoadSegment"] }
         },
         "required": ["type"]
       }
