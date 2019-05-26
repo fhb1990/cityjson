@@ -1,14 +1,14 @@
 {
   "type": "CityJSON_Extension",
-  "name": "Road Network",
+  "name": "Road extension",
   "uri": "https://github.com/fhb1990/cityjson/blob/master/schema/v09/extensions/roadnetwork.json",
-  "version": "0.1",
+  "version": "0.2",
   "description": "CityJSON encoding for CityGML Road Transportation network",
 
   "extraRootProperties": {},
 
   "extraAttributes": {
-  	"RoadSegment": {
+  	"Road": {
   		"+roadType": {
   			"enum": ["Road", "Connecting", "Roundabout"] 
   		},

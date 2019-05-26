@@ -406,12 +406,12 @@
   },
   
   
-  "RoadSegment": {
+  "Road": {
     "allOf": [
       { "$ref": "#/_AbstractTransportationComplex" },
       {
         "properties": {
-          "type": { "enum": ["RoadSegment"] }
+          "type": { "enum": ["Road"] }
         },
         "required": ["type"]
       }
@@ -446,23 +446,55 @@
   "Node": {
     "allOf": [
       { "$ref": "#/_AbstractCityObject" },
-      { "properties": {
-        "links": {
-          "type": "array",
-          "items": {
-            "type": "string"
+      {
+        "properties": {
+          "attributes": {
+            "properties": {
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                  },
+                "description": "array of Link CityObject IDs which are adjacent to the node"
+              },
+            }
           },
-          "description": "array of link CityObject IDs which are adjacent to the node"
-        },
-        "geometry": {
-          "type": "array",
-          "items": {"$ref": "geomprimitives.schema.json#/MultiPoint"}
-        }
+          "geometry": {
+            "type": "array",
+            "items": {"$ref": "geomprimitives.schema.json#/MultiPoint"}
+          }
         },
         "required": ["geometry"]
       }
     ]
-  },  
+  },
+
+
+  "Link": {
+    "allOf": [
+      { "$ref": "#/_AbstractCityObject" },
+      { 
+        "properties": {
+          "attributes": {
+            "properties": {
+              "startNode": {
+                "type": "string",
+                "description": "CityObject ID of startNode"
+              },
+              "endNode": {
+                "type": "string",
+                "description": "CityObject ID of endNode"
+              },
+            }
+          },
+          "geometry": {
+            "type": "array",
+            "items": {"$ref": "geomprimitives.schema.json#/MultiLineString"}
+          }
+        }
+      }
+    ]
+  },
 
 
   "TINRelief": {
