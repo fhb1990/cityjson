@@ -1,37 +1,20 @@
 {
   "type": "CityJSON_Extension",
-  "name": "Road extension",
+  "name": "RoadExt",
   "uri": "https://github.com/fhb1990/cityjson/blob/master/schema/v09/extensions/roadnetwork.json",
-  "version": "0.2",
-  "description": "CityJSON encoding for CityGML Road Transportation network",
+  "version": "1.0",
+  "description": "CityJSON encoding for roads in improved CityGML Transportation data",
 
   "extraRootProperties": {},
 
   "extraAttributes": {
   	"Road": {
-  		"+roadType": {
-  			"enum": ["Road", "Connecting", "Roundabout"] 
-  		},
-  		"+startNode": {
-  			"type": "string",
-  			"description": "ID of startNode"
-  		},
-  		"+endNode": {
-  			"type": "string",
-  			"description": "ID of endNode"
-  		},
-  		"+maxSpeed": {
-  			"type": "number"
-  		},
-  		"+mode": {
+  		"+administrator": {
   			"type": "string"
   		},
   		"+lanes": {
   			"type": "number"
   		},
-  		"+drivingDirection": {
-  			"enum": ["toEnd", "toStart", "both"]
-  		}
   	}
   },
 
@@ -59,11 +42,30 @@
   		}
   		]
   	},
-  	"+Road": {
+  	"+RoadEdge": {
   		"allOf": [
-  			{"$ref": "../cityobjects.schema.json#/CityObjectGroup"}
+  			{"$ref": "../cityobjects.schema.json#/Edge"},
+  			{"properties": {
+  				"type": { "enum": ["+RoadEdge"] },
+  				"attributes": {
+  					"type": "object",
+  					"properties": {
+  						"roadType": {
+  							"enum": ["Road", "Connecting", "Roundabout"]
+  						},
+  						"classification": {"type": "string"},
+  						"drivingDirection": {
+  							"enum": ["toEnd", "toStart", "both"]
+  						},
+  						"maxSpeed": {"type": "number"},
+  						"administrator": {"type": "string"},
+  						"streetName": {"type": "string"}
+  					}
+  				}
+
+  			}
+  		}
   		]
   	}
-
   }
 }
