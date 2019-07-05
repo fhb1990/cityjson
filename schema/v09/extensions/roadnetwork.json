@@ -34,7 +34,8 @@
   								"type": "array",
   								"items": {"enum": [0,1]}
   							}
-  						}
+  						},
+              "IntersectionID": {"type": "string"}
   					}
   				}
 
@@ -59,7 +60,8 @@
   						},
   						"maxSpeed": {"type": "number"},
   						"administrator": {"type": "string"},
-  						"streetName": {"type": "string"}
+  						"streetName": {"type": "string"},
+              "intersectionID": {"type": "string"}
   					}
   				}
 
