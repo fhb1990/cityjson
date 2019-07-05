@@ -61,7 +61,11 @@
   						"maxSpeed": {"type": "number"},
   						"administrator": {"type": "string"},
   						"streetName": {"type": "string"},
-              "intersectionID": {"type": "string"}
+              "intersectionID": {"type": "string"},
+              "modes": {
+                "type": "array",
+                "items": "string"
+              }
   					}
   				}
 
