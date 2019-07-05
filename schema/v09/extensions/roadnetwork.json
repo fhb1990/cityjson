@@ -50,7 +50,7 @@
   				"attributes": {
   					"type": "object",
   					"properties": {
-  						"roadType": {
+  						"edgeType": {
   							"enum": ["Road", "Connecting", "Roundabout"]
   						},
   						"classification": {"type": "string"},
