@@ -396,8 +396,20 @@
                 {"$ref": "geomprimitives.schema.json#/MultiSurface"},
                 {"$ref": "geomprimitives.schema.json#/CompositeSurface"},
                 {"$ref": "geomprimitives.schema.json#/MultiLineString"},
-                {"type": "array",
-                "items": {"type": "string"}}
+                {"type": "object",
+                  "properties": {
+                    "type": { "enum": ["RoadEdges"] },
+                    "lod": {
+                      "type": "number",
+                      "minimum": 0.0,
+                      "maximum": 3.5
+                    },
+                    "boundaries": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                },
               ]
             }
           }
@@ -457,7 +469,7 @@
                 "items": {
                   "type": "string"
                   },
-                "description": "array of Edge CityObject IDs which are adjacent to the node"
+                "description": "array of Edge CityObject IDs which are incident to the node"
               },
             }
           },
@@ -490,7 +502,7 @@
             }
           },
           "geometry": {
-            "type": "array",
+            "type": "array",  
             "items": {"$ref": "geomprimitives.schema.json#/MultiLineString"}
           }
         }
